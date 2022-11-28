@@ -26,7 +26,7 @@ class Relationship
                 exit();
             }
         } else {
-            header("Location: http://localhost/modulePHP/projet_php/index?action=err&mes=connexion");
+            header("Location: http://localhost/modulePHP/projet_php/index?action=connexion");
             exit();
         }
     }

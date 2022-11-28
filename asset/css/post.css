@@ -135,6 +135,18 @@ a{
     justify-content: space-between;
 }
 
+.post_header,
+.comment_header{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn_sup{
+    background-color:#de1414;
+    padding: 5px 15px;
+    border-radius: 9999px;
+}
 .post_footer{
     width: 100%;
     height: auto;

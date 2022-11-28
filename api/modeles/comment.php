@@ -69,7 +69,7 @@ class CommentRepository
 
     function deleteComment($id_com)
     {
-        $sql = $this->con->con()->prepare('DELETE FROM `commentaires` WHERE `id_post` = ?');
+        $sql = $this->con->con()->prepare('DELETE FROM `commentaires` WHERE `id_com` = ?');
         $res = $sql->execute([$id_com]);
         return $res;
     }

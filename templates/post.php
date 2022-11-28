@@ -23,9 +23,14 @@
     <div class="cb_right">
         <div class="block_contenu">
             <div class="post_block">
-                <div class="post_user">
-                    <img src="http://localhost/modulePHP/projet_php/asset/profile-user.png" alt="imge de profil du propietaire">
-                    <a href=""><?= $resPost->user_pseudo ?></a>
+                <div class="post_header">
+                    <div class="post_user">
+                        <img src="http://localhost/modulePHP/projet_php/asset/profile-user.png" alt="imge de profil du propietaire">
+                        <a href=""><?= $resPost->user_pseudo ?></a>
+                    </div>
+                    <?php if ($resPost->id_user === $resUser->id_user) {
+                        echo '<a class="btn_sup" href="http://localhost/modulePHP/projet_php/index?action=delpost&id_user=' . $resUser->id_user . '&id_post=' . $resPost->id_post . '&id=' . $resPost->id_user . '" onclick=" return confirm(\'voulez-vous vraiment supprimer ce post ?\')">Sup</a>';
+                    } ?>
                 </div>
                 <p>
                     <?= $resPost->text_post ?>
@@ -56,12 +61,17 @@
             <div class="comments_block">
                 <?php foreach ($resComment as $e) { ?>
                     <div class="comment_block">
-                        <div class="comment_user">
-                            <img src="http://localhost/modulePHP/projet_php/asset/profile-user.png" alt="imge de profil du propietaire">
-                            <div class="test">
-                                <a href=""><?= $e->user_pseudo ?></a>
-                                <p>// <?= $e->date_com ?></p>
+                        <div class="comment_header">
+                            <div class="comment_user">
+                                <img src="http://localhost/modulePHP/projet_php/asset/profile-user.png" alt="imge de profil du propietaire">
+                                <div class="test">
+                                    <a href=""><?= $e->user_pseudo ?></a>
+                                    <p>// <?= $e->date_com ?></p>
+                                </div>
                             </div>
+                            <?php if ($e->id_user === $resUser->id_user) {
+                                echo '<a class="btn_sup" href="http://localhost/modulePHP/projet_php/index?action=delcomment&id_com=' . $e->id_com . '&id_post=' . $e->id_post . '" onclick=" return confirm(\'voulez-vous vraiment supprimer ce commentaire ?\')">Sup</a>';
+                            } ?>
                         </div>
                         <p><?= $e->text_com ?></p>
                     </div>
