@@ -1,0 +1,268 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height: 200vh;
+    height: auto;
+    position: relative;
+}
+
+a{
+    text-decoration: none;
+    color: #0d0d0d;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header_block{
+    position: fixed;
+    box-sizing: border-box;
+    z-index: 9999;
+    width: 100%;
+    max-height: 70px;
+    height: 10vh;
+    padding: 1.5px 10px;
+    background-color:  #0d0d0d;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_block>a>img{
+    width: 150px;
+    height: 50px;
+    padding: 1.5px;
+    border-radius: 15px;
+}
+.profile_block{
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    align-items: center;
+}.profile_block>a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #f2f2f2;
+    margin-right: 5px;
+}.profile_block>img {
+    width: 25px;
+    height: 25px;
+}
+
+.center_block{
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+/* bloc centre coter gauche... */
+.cb_left{
+    position: fixed;
+    z-index: 9998;
+    top: 69px;
+    width: 20%;
+    height: 86vh;
+    border: 1px solid #0d0d0d;
+    box-shadow: 1px 1px 10px 1px #0d0d0d;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 25px 5px;
+}
+
+.nav_block{
+    display: flex;
+    flex-flow: column nowrap;
+}.nav_block :nth-child(n){
+    margin: 5px 0;
+    transition: all .3s ease-in;
+}.nav_block>a:hover{
+    background-color: #0d0d0d;
+    color: #f2f2f2;
+    border-radius: 9999px;
+    padding: 10px 15px;
+    transition: all .3s ease-in;
+}
+
+.btn_deco{
+    align-self: center;
+    background-color: #0d0d0d;
+    color: #f2f2f2;
+    border-radius: 9999px;
+    padding: 10px 15px;
+    transition: all .3s ease-in;
+}.btn_deco:hover{
+    color: #0d0d0d;
+    border: 1.5px solid #0d0d0d;
+    background-color: #f2f2f2;
+    border-radius: 9999px;
+    transition: all .3s ease-in;
+}
+/* bloc centre coter droit... */
+.cb_right{
+    margin-left: 20%;
+    margin-top: 70px;
+    width: 80%;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+}
+
+.block_contenu{
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding: 15px;
+    box-shadow: 1px 1px 10px 1px #0d0d0d;
+    background-color: #f2f2f2;
+    border-radius: 15px;
+}
+/* block post (information du post) */
+.post_block{
+    min-height: 30vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+.post_footer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post_user,
+.reaction{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}.reaction>img{
+    width: 30px;
+    height: 30px;
+}.post_user>img{
+    width: 45px;
+    height: 45px;
+    background-color: #0d0d0d;
+    border-radius: 50%; 
+}.post_user>a{
+    text-decoration: none;
+    margin-left: 10px;
+    color: #0d0d0d;
+}
+
+.reaction_block{
+    width: 30%;
+    height: auto;
+    display: flex;
+    flex-wrap: row nowrap;
+    justify-content: space-evenly;
+}
+
+/* block input (ajouter un commentaire) */
+.block_input{
+    margin: 15px 0;
+}.block_input>form{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.block_input>form>input{
+    width: 80%;
+    height: 40px;
+    padding: 5px;
+    border-radius: 15px;
+    border: 1px solid #0d0d0d;
+    color: #0d0d0d;
+}
+
+.block_input>form>button{
+    background: url("http://localhost/modulePHP/projet_php/asset/btn_send_off.png");
+    height: 40px;
+    width : 40px;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all .3s ease-in;
+}.block_input>form>button:hover{
+    height: 40px;
+    width : 40px;
+    border-radius: 50%;
+    background : center / cover url("http://localhost/modulePHP/projet_php/asset/btn_send_on.png") #0d0d0d no-repeat;
+    transition: all .3s ease-in;
+}
+
+/* block comments (bloc des commentaires) */
+.comment_block{
+ margin: 10px 0;
+}
+.comment_user{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+.comment_user>img{
+    width: 30px;
+    height: 30px;
+    background-color: #0d0d0d;
+    border-radius: 50%; 
+}
+.test>a{
+    font-size: 15px;
+    text-decoration: none;
+    margin-left: 10px;
+    color: #0d0d0d;
+}.comment_block>p{
+    padding: 5px 10px;
+    text-align: justify;
+    font-size: 12px;
+}.test{
+    display: flex;
+    flex-flow: row;
+    align-items: baseline;
+}.test>p{
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+
+
+.btn_add{
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #f2f2f2;
+    background-color: #0d0d0d;
+    transition: all .3s ease-in;
+    font-size: 35px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}.btn_add:hover{
+    transform: rotate(-180deg);
+    color: #0d0d0d;
+    border: 1.5px solid #0d0d0d;
+    font-weight: 600;
+    background-color: #f2f2f2;
+    transition: all .3s ease-in;
+    
+}

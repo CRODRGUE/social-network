@@ -1,0 +1,226 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height: 200vh;
+    height: auto;
+    position: relative;
+}
+
+a{
+    text-decoration: none;
+    color: #0d0d0d;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header_block{
+    position: fixed;
+    box-sizing: border-box;
+    z-index: 9999;
+    width: 100%;
+    max-height: 70px;
+    height: 10vh;
+    padding: 1.5px 10px;
+    background-color:  #0d0d0d;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_block>img{
+    width: 150px;
+    height: 50px;
+    padding: 1.5px;
+    border-radius: 15px;
+}
+.profile_block{
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    align-items: center;
+}.profile_block>a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #f2f2f2;
+    margin-right: 5px;
+}.profile_block>img {
+    width: 25px;
+    height: 25px;
+}
+
+.center_block{
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+/* bloc centre coter gauche... */
+.cb_left{
+    position: fixed;
+    z-index: 9998;
+    top: 69px;
+    width: 20%;
+    height: 86vh;
+    border: 1px solid #0d0d0d;
+    box-shadow: 1px 1px 10px 1px #0d0d0d;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 25px 5px;
+}
+
+.nav_block{
+    display: flex;
+    flex-flow: column nowrap;
+}.nav_block :nth-child(n){
+    margin: 5px 0;
+    transition: all .3s ease-in;
+}.nav_block>a:hover{
+    background-color: #0d0d0d;
+    color: #f2f2f2;
+    border-radius: 9999px;
+    padding: 10px 15px;
+    transition: all .3s ease-in;
+}
+
+.btn_deco{
+    align-self: center;
+    background-color: #0d0d0d;
+    color: #f2f2f2;
+    border-radius: 9999px;
+    padding: 10px 15px;
+    transition: all .3s ease-in;
+}.btn_deco:hover{
+    color: #0d0d0d;
+    border: 1px solid #0d0d0d;
+    background-color: #f2f2f2;
+    border-radius: 9999px;
+    transition: all .3s ease-in;
+}
+/* bloc centre coter droit... */
+.cb_right{
+    margin-left: 20%;
+    margin-top: 70px;
+    width: 80%;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+}
+.cbr_block{
+    width: 80%;
+    margin-top: 30px;
+    display: none;
+    flex-flow: column nowrap;
+    align-items: center;
+
+}
+
+.cbr_block.on{
+    display: flex;
+}
+.cbr_nav{
+    width: 80%;
+    margin-top: 30px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.btn_navr{
+    cursor: pointer;
+    border: #0d0d0d 1px solid;
+    padding: 5px 10px;
+    border-radius: 99999px;
+    color: #0d0d0d;
+    transition: all .3s ease-in;
+
+}.btn_navr.on{
+    background-color: #0d0d0d;
+    color: #f2f2f2;
+    font-weight: 500;
+    transition: all .3s ease-in;
+}
+
+.user_block{
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding: 15px;
+    box-shadow: 1px 1px 10px 1px #0d0d0d;
+    background-color: #f2f2f2;
+    border-radius: 15px;
+}
+.user_info{
+    display: flex;
+    align-items: center;
+}
+.user_info>img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%; 
+}.user_info>p{
+    margin-left: 10px;
+}
+
+.user_nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.un_child{
+    margin-right: 5px;
+}
+
+.user_nav>a{
+    background-color: #0d0d0d;
+    border: 1px solid #0d0d0d;
+    color: #f2f2f2;
+    border-radius: 9999px;
+    padding: 10px 15px;
+    transition: all .3s ease-in;
+}.user_nav>a:hover{
+    color: #0d0d0d;
+    border: 1px solid #0d0d0d;
+    background-color: #f2f2f2;
+    border-radius: 9999px;
+    transition: all .3s ease-in;
+}
+
+.btn_add{
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #f2f2f2;
+    background-color: #0d0d0d;
+    transition: all .3s ease-in;
+    font-size: 35px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}.btn_add:hover{
+    transform: rotate(-180deg);
+    color: #0d0d0d;
+    border: 1.5px solid #0d0d0d;
+    font-weight: 600;
+    background-color: #f2f2f2;
+    transition: all .3s ease-in;
+    
+}
