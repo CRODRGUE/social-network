@@ -17,6 +17,7 @@ class deleteUserRequest
                     header("Location: http://localhost/modulePHP/projet_php/index?action=relation");
                     exit();
                 }
+                echo $resFriend;
             } else {
                 $mes = 'Oupss une erreur c\'est produite...';
                 header("Location: http://localhost/modulePHP/projet_php/index?action=err&mes=" . $mes);

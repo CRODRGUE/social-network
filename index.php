@@ -72,7 +72,7 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
         ((new AcceptFriendRequest)->exec($_GET));
     } elseif ($route === 'deletefriendrequest') {
         ((new DeleteFriendRequest)->exec($_GET));
-    } elseif ($route === 'deletefriendrequest') {
+    } elseif ($route === 'deleteuserrequest') {
         ((new DeleteUserRequest)->exec($_GET));
     } elseif ($route === 'deletefriend') {
         ((new DeleteFriend)->exec($_GET));

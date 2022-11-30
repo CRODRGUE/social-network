@@ -57,7 +57,7 @@
                             <p><?= $e->pseudo ?></p>
                         </div>
                         <div class="user_nav">
-                            <a href="http://localhost/modulePHP/projet_php/index?action=deleteuserrequest&id_user=<?= $resUser->id_user ?>&id_friend=<?= $e->id_user ?>">sup</a>
+                            <a href="http://localhost/modulePHP/projet_php/index?action=deleteuserrequest&id_user=<?= $resUser->id_user ?>&id_friend=<?= $e->id_user_friend ?>">sup</a>
                         </div>
                     </div>
             <?php }
