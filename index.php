@@ -10,6 +10,7 @@ require_once(__DIR__ . '/api/controleurs/user/logout.php');
 require_once(__DIR__ . '/api/controleurs/friend/accept.php');
 require_once(__DIR__ . '/api/controleurs/friend/deleteFriend.php');
 require_once(__DIR__ . '/api/controleurs/friend/deleteResquest.php');
+require_once(__DIR__ . '/api/controleurs/friend/deleteUserRequest.php');
 require_once(__DIR__ . '/api/controleurs/friend/request.php');
 require_once(__DIR__ . '/api/controleurs/relationship.php');
 
@@ -71,6 +72,8 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
         ((new AcceptFriendRequest)->exec($_GET));
     } elseif ($route === 'deletefriendrequest') {
         ((new DeleteFriendRequest)->exec($_GET));
+    } elseif ($route === 'deletefriendrequest') {
+        ((new DeleteUserRequest)->exec($_GET));
     } elseif ($route === 'deletefriend') {
         ((new DeleteFriend)->exec($_GET));
     }

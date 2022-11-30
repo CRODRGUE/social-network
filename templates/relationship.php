@@ -23,8 +23,9 @@
 
     <div class="cb_right">
         <div class="cbr_nav">
-            <p class="btn_navr on">Mes relation</p>
+            <p class="btn_navr on">Mes relations</p>
             <p class="btn_navr">Mes demandes</p>
+            <p class="btn_navr">Nouvelles demandes</p>
             <p class="btn_navr">Nouvelles relation</p>
         </div>
         <div class="cbr_block on">
@@ -48,6 +49,25 @@
 
         <div class="cbr_block">
             <?php
+            if (!empty($resRequestUser)) {
+                foreach ($resRequestUser as $e) { ?>
+                    <div class=" user_block">
+                        <div class="user_info">
+                            <img src="./../projet_php/asset/profile-user.png" alt="image de profil">
+                            <p><?= $e->pseudo ?></p>
+                        </div>
+                        <div class="user_nav">
+                            <a href="http://localhost/modulePHP/projet_php/index?action=deleteuserrequest&id_user=<?= $resUser->id_user ?>&id_friend=<?= $e->id_user ?>">sup</a>
+                        </div>
+                    </div>
+            <?php }
+            } else {
+                echo '<h3>vous n\'avez pas de demandes en cours</h3>';
+            } ?>
+        </div>
+
+        <div class="cbr_block">
+            <?php
             if (!empty($resRequest)) {
                 foreach ($resRequest as $e) { ?>
                     <div class=" user_block">
@@ -62,7 +82,7 @@
                     </div>
             <?php }
             } else {
-                echo '<h3>vous n\'avez de nouvelles demandes</h3>';
+                echo '<h3>vous n\'avez pas de nouvelles demandes</h3>';
             } ?>
         </div>
 

@@ -18,7 +18,8 @@ class Relationship
             $resFriend = $Friend->getUserFriends($_SESSION['id_user']);
             $resAllUser = $User->getNewUser($_SESSION['id_user']);
             $resRequest = $Friend->getUserFriendsRequest($_SESSION['id_user']);
-            if ($resRequest !== false && $resAllUser !== false && $resFriend !== false && $resUser !== false) {
+            $resRequestUser = $Friend->getUserRequest($_SESSION['id_user']);
+            if ($resRequest !== false && $resAllUser !== false && $resFriend !== false && $resUser !== false && $resRequestUser !== false) {
                 require_once(__DIR__ . '/../../templates/relationship.php');
             } else {
                 $mes = 'Oupss une erreur c\'est produite... friend';

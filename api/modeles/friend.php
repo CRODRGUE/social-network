@@ -96,6 +96,15 @@ class FriendRepository
         $res = $sql->execute([$id_user_friend, $id_user, 1]);
         return $res;
     }
+
+    // supprimer la demande en cours (l'utilisateur)
+    function deleteUserRequest($id_user, $id_user_friend)
+    {
+        $sql = $this->con->con()->prepare('DELETE FROM `follow` WHERE `id_user` = ? AND `id_user_1` = ? AND `status` = ?');
+        $res = $sql->execute([$id_user, $id_user_friend, 1]);
+        return $res;
+    }
+
     //cree le lien entre le demandeur et la cible
     function acceptFriendRequest($id_user, $id_user_friend)
     {
