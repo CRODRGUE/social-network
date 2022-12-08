@@ -6,15 +6,15 @@
     <a href="http://localhost/modulePHP/projet_php/index?action=home"><img src="http://localhost/modulePHP/projet_php/asset/logo.png" alt="logo du reseau social delat"></a>
     <div class="profile_block">
         <img src="http://localhost/modulePHP/projet_php/asset/profile-user.png" alt="image de profile">
-        <a href=""><?= $resUser->pseudo ?></a>
+        <a href="http://localhost/modulePHP/projet_php/index?action=profil"><?= $resUser->pseudo ?></a>
     </div>
 </header>
 <div class="center_block">
     <div class="cb_left">
         <div class="nav_block">
             <a class="nav_option" href="http://localhost/modulePHP/projet_php/index?action=relation">MES RELATIONS</a>
-            <a class="nav_option" href="">MES POSTES</a>
-            <a class="nav_option" href="">MES COMMENTAIRES</a>
+            <a class="nav_option" href="http://localhost/modulePHP/projet_php/index?action=mesposts">MES POSTES</a>
+            <a class="nav_option" href="http://localhost/modulePHP/projet_php/index?action=mescom">MES COMMENTAIRES</a>
         </div>
 
         <a class="btn_deco" href="http://localhost/modulePHP/projet_php/index?action=logout">DECONNEXION</a>
@@ -38,7 +38,7 @@
                             <p><?= $e->pseudo ?></p>
                         </div>
                         <div class="user_nav">
-                            <a href="http://localhost/modulePHP/projet_php/index?action=deletefriend&id_user=<?= $e->id_user ?>&id_friend=<?= $e->id_user_friend ?>">Supprimer</a>
+                            <a href="http://localhost/modulePHP/projet_php/index?action=deletefriend&id_friend=<?= $e->id_user_friend ?>" onclick=" return confirm('voulez-vous vraiment supprimer cet ami ?')">Supprimer</a>
                         </div>
                     </div>
             <?php }
@@ -47,7 +47,7 @@
             } ?>
         </div>
 
-        <div class="cbr_block">
+        <div class=" cbr_block">
             <?php
             if (!empty($resRequestUser)) {
                 foreach ($resRequestUser as $e) { ?>
@@ -57,7 +57,7 @@
                             <p><?= $e->pseudo ?></p>
                         </div>
                         <div class="user_nav">
-                            <a href="http://localhost/modulePHP/projet_php/index?action=deleteuserrequest&id_user=<?= $resUser->id_user ?>&id_friend=<?= $e->id_user_friend ?>">sup</a>
+                            <a href="http://localhost/modulePHP/projet_php/index?action=deleteuserrequest&id_friend=<?= $e->id_user_friend ?>" onclick=" return confirm('voulez-vous vraiment annuler la demande ?')">Annuler</a>
                         </div>
                     </div>
             <?php }
@@ -66,7 +66,7 @@
             } ?>
         </div>
 
-        <div class="cbr_block">
+        <div class=" cbr_block">
             <?php
             if (!empty($resRequest)) {
                 foreach ($resRequest as $e) { ?>
@@ -76,8 +76,8 @@
                             <p><?= $e->pseudo ?></p>
                         </div>
                         <div class="user_nav">
-                            <a href="http://localhost/modulePHP/projet_php/index?action=acceptfriendrequest&id_user=<?= $resUser->id_user ?>&id_friend=<?= $e->id_user ?>">Accepter</a>
-                            <a href="http://localhost/modulePHP/projet_php/index?action=deletefriendrequest&id_user=<?= $resUser->id_user ?>&id_friend=<?= $e->id_user ?>">Decliner</a>
+                            <a href="http://localhost/modulePHP/projet_php/index?action=acceptfriendrequest&id_friend=<?= $e->id_user ?>">Accepter</a>
+                            <a href="http://localhost/modulePHP/projet_php/index?action=deletefriendrequest&id_friend=<?= $e->id_user ?>" onclick=" return confirm('voulez-vous vraiment decliner cette demande d\'ami ?')">Decliner</a>
                         </div>
                     </div>
             <?php }
@@ -86,7 +86,7 @@
             } ?>
         </div>
 
-        <div class="cbr_block">
+        <div class=" cbr_block">
             <?php if (!empty($resAllUser)) {
                 foreach ($resAllUser as $e) { ?>
                     <div class=" user_block">
@@ -95,7 +95,7 @@
                             <p><?= $e->pseudo ?></p>
                         </div>
                         <div class="user_nav">
-                            <a href="http://localhost/modulePHP/projet_php/index?action=friendrequest&id_user=<?= $resUser->id_user ?>&id_friend=<?= $e->id_user ?>">Ajouter</a>
+                            <a href="http://localhost/modulePHP/projet_php/index?action=friendrequest&id_friend=<?= $e->id_user ?>">Ajouter</a>
                         </div>
                     </div>
             <?php }

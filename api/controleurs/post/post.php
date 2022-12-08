@@ -4,6 +4,7 @@ require_once(__DIR__ . '/../../bdd_con.php');
 require_once(__DIR__ . '/../../modeles/user.php');
 require_once(__DIR__ . '/../../modeles/post.php');
 require_once(__DIR__ . '/../../modeles/comment.php');
+require_once(__DIR__ . '/../../modeles/reaction.php');
 
 class PostDisplay
 {
@@ -15,10 +16,15 @@ class PostDisplay
                 $User = new UserRepository();
                 $Post = new PostRepository();
                 $Comment = new CommentRepository();
-                $User->con = $Post->con = $Comment->con = new BDD();
+                $Reaction = new ReactionRepository();
+                $User->con = $Post->con = $Comment->con = $Reaction->con = new BDD();
                 $resUser = $User->getUserById($_SESSION['id_user']);
-                $resPost = $Post->getPostById($id_post);
+                $resPost = $Post->getPostById($id_post, $_SESSION['id_user']);
                 $resComment = $Comment->getCommentPost($id_post);
+                $UserReaction = $Reaction->getUserReaction($_SESSION['id_user'], $id_post);
+                $ListDislike = $Reaction->getAllReaction($id_post, 3);
+                $ListJadore = $Reaction->getAllReaction($id_post, 2);
+                $ListLike = $Reaction->getAllReaction($id_post, 1);
                 if ($resPost !== false && $resUser !== false && $resComment !== false) {
                     require_once(__DIR__ . '/../../../templates/post.php');
                 }

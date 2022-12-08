@@ -15,11 +15,12 @@ class UserLogin
             $User->con = new BDD();
             $pwd = hash('sha256', $pwd);
             if (strpos($identifiant, '@')) {
-                $res = $User->getUserByMail($identifiant);
-                if ($res !== false && check($res->mail, $identifiant) && check($res->pwd, $pwd)) {
+                $res = $User->getUserByMail(strtolower($identifiant));
+                if ($res !== false && check($res->mail, strtolower($identifiant)) && check($res->pwd, $pwd)) {
                     session_start();
                     $_SESSION['status'] = true;
                     $_SESSION['id_user'] = $res->id_user;
+                    $this->addLog($res->id_user, $_SERVER);
                     header("Location: http://localhost/modulePHP/projet_php/index?action=home");
                     exit();
                 }
@@ -29,7 +30,8 @@ class UserLogin
                     session_start();
                     $_SESSION['status'] = true;
                     $_SESSION['id_user'] = $res->id_user;
-                    header("Location: http://localhost/modulePHP/projet_php/index?action=home");
+                    $this->addLog($res->id_user, $_SERVER);
+                    header("Location: http://localhost/modulePHP/projet_php/index?action=home&page=0");
                     exit();
                 }
             }
@@ -41,6 +43,14 @@ class UserLogin
             header("Location: http://localhost/modulePHP/projet_php/index?action=err&mes=" . $mes);
             exit();
         }
+    }
+
+    function addLog($user, $req)
+    {
+        $date =  date("Y-m-d H:i:s");
+        $fichier = fopen((__DIR__ . '/../../../logs/login.txt'), "a");
+        fputs($fichier, 'login // date ' . $date . ' // id_user ' . $user . ' // ip ' . $req['REMOTE_ADDR'] . PHP_EOL);
+        fclose($fichier);
     }
 }
 

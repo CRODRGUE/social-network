@@ -15,13 +15,14 @@ class FriendRepository
 {
     public BDD $con;
 
-    // Liste d'amis de l'utilisateur (status = 2) --
+    // Liste d'amis de l'utilisateur (status = 2)
     function getUserFriends($id_user)
     {
         $sql = $this->con->con()->prepare('SELECT *, (SELECT pseudo FROM `users` WHERE id_user = `follow`.id_user_1) as pseudo FROM `follow` WHERE `id_user` = ? AND `status` = ?');
         $sql->execute([$id_user, 2]);
         $res = $sql->fetchAll();
-        if ($res !== false) {
+        if ($res === false) {
+            return false;
         }
         $friends = [];
         foreach ($res as $e) {
@@ -34,13 +35,14 @@ class FriendRepository
         }
         return $friends;
     }
-    // Liste des demandes d'amis pour l'utilisateur (status = 1) --
+    // Liste des demandes d'amis pour l'utilisateur (status = 1)
     function getUserFriendsRequest($id_user)
     {
         $sql = $this->con->con()->prepare('SELECT *,(SELECT pseudo FROM `users` WHERE id_user = `follow`.id_user) as pseudo  FROM `follow` WHERE `id_user_1` = ? AND `status` = ?');
         $sql->execute([$id_user, 1]);
         $res = $sql->fetchAll();
-        if ($res !== false) {
+        if ($res === false) {
+            return false;
         }
         $friends = [];
         foreach ($res as $e) {
@@ -53,13 +55,14 @@ class FriendRepository
         }
         return $friends;
     }
-    // Liste des demandes d'amis effectuer par l'utilisateur (status = 1)
+    // Liste des demandes d'amis emise par l'utilisateur (status = 1)
     function getUserRequest($id_user)
     {
         $sql = $this->con->con()->prepare('SELECT *, (SELECT pseudo FROM `users` WHERE id_user = `follow`.id_user_1) as pseudo FROM `follow` WHERE `id_user` = ? AND `status` = ?');
         $sql->execute([$id_user, 1]);
         $res = $sql->fetchAll();
-        if ($res !== false) {
+        if ($res === false) {
+            return false;
         }
         $friends = [];
         foreach ($res as $e) {
@@ -73,7 +76,7 @@ class FriendRepository
         return $friends;
     }
 
-    // intialise la demande d'ami
+    // intialise de la demande d'ami
     function createFriendRequest($id_user, $id_user_friend)
     {
         $sql = $this->con->con()->prepare('INSERT INTO `follow`(`id_user`, `id_user_1`, `status`) VALUES (?,?,?)');
@@ -81,7 +84,7 @@ class FriendRepository
         return $res;
     }
 
-    // supprime la relation
+    //Supprime la relation
     function deleteFriend($id_user, $id_user_friend)
     {
         $sql = $this->con->con()->prepare('DELETE FROM `follow` WHERE `id_user` = ? AND `id_user_1` = ? AND `status` = ?');
@@ -89,7 +92,7 @@ class FriendRepository
         return $res;
     }
 
-    //supprime la demande (en cas de refus)
+    //Supprime la demande (en cas de refus)
     function deleteFriendRequest($id_user, $id_user_friend)
     {
         $sql = $this->con->con()->prepare('DELETE FROM `follow` WHERE `id_user` = ? AND `id_user_1` = ? AND `status` = ?');
@@ -97,7 +100,7 @@ class FriendRepository
         return $res;
     }
 
-    // supprimer la demande en cours (l'utilisateur)
+    //Supprime la demande en cours (de l'utilisateur)
     function deleteUserRequest($id_user, $id_user_friend)
     {
         $sql = $this->con->con()->prepare('DELETE FROM `follow` WHERE `id_user` = ? AND `id_user_1` = ? AND `status` = ?');
@@ -105,18 +108,31 @@ class FriendRepository
         return $res;
     }
 
-    //cree le lien entre le demandeur et la cible
+    //Cree le lien entre le demandeur et la cible
     function acceptFriendRequest($id_user, $id_user_friend)
     {
         $sql = $this->con->con()->prepare('INSERT INTO `follow`(`id_user`, `id_user_1`, `status`) VALUES (?,?,?)');
         $res = $sql->execute([$id_user, $id_user_friend, 2]);
         return $res;
     }
-    //update la demande en accepter (status = 2)
+
+    //Update la demande en acceptant (status = 2)
     function updateFriendRequest($id_user, $id_user_friend)
     {
         $sql = $this->con->con()->prepare('UPDATE `follow` SET `status`= ? WHERE `id_user` = ? AND `id_user_1` = ? AND `status` = ?');
-        $res = $sql->execute([2, $id_user, $id_user_friend, 1]);
+        $sql->execute([2, $id_user, $id_user_friend, 1]);
+        $affected_row = $sql->rowCount();
+        if ($affected_row === 0) {
+            return false;
+        }
+        return true;
+    }
+
+    //Supprime les relations etblies, en cours lie à utilisateur
+    function deleteAllUserFriend($id_user)
+    {
+        $sql = $this->con->con()->prepare('DELETE FROM `follow` WHERE `id_user` = ? OR `id_user_1` = ?');
+        $res = $sql->execute([$id_user, $id_user]);
         return $res;
     }
 }

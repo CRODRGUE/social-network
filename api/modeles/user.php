@@ -12,6 +12,7 @@ class UserRepository
 {
     public BDD $con;
 
+    // Ajouter d'un nouvelle utilisateur
     public function addUser(string $pseudo, string $mail, string $pwd)
     {
         $sql = $this->con->con()->prepare('INSERT INTO `users`( `pseudo`, `mail`, `pwd`) VALUES (?,?,?)');
@@ -20,6 +21,7 @@ class UserRepository
         return $res;
     }
 
+    //Supprimer un utilisateur
     public function delUser($id_user)
     {
         $sql = $this->con->con()->prepare('DELETE FROM `users` WHERE `id_user` = ?');
@@ -27,6 +29,7 @@ class UserRepository
         return $res;
     }
 
+    //Recuperer un utilisateur avec son id_user
     public function getUserById($id_user)
     {
         $sql = $this->con->con()->prepare('SELECT `id_user`,`pseudo`, `mail`, `pwd` FROM `users` WHERE `id_user` = ?');
@@ -43,6 +46,7 @@ class UserRepository
         return $user;
     }
 
+    //Recuperer un utilisateur avec son mail
     public function getUserByMail(string $mail)
     {
         $sql = $this->con->con()->prepare('SELECT `id_user`,`pseudo`, `mail`, `pwd` FROM `users` WHERE `mail` = ?');
@@ -59,6 +63,7 @@ class UserRepository
         return $user;
     }
 
+    //Recuperer un utilisateur avec son pseudo
     public function getUserByPseudo(string $pseudo)
     {
         $sql = $this->con->con()->prepare('SELECT `id_user`,`pseudo`, `mail`, `pwd` FROM `users` WHERE `pseudo` = ?');
@@ -75,6 +80,7 @@ class UserRepository
         return $user;
     }
 
+    //Recuperer la liste de tous les utilisateurs
     public function getAllUser($id_user)
     {
         $sql = $this->con->con()->prepare('SELECT `id_user`,`pseudo` FROM `users` WHERE id_user NOT IN(?)');
@@ -93,6 +99,7 @@ class UserRepository
         return $users;
     }
 
+    //Recuperer la liste de tous les utilisateurs qui n'ont aucun lien avec l'utilisateur (pas de demande en cours, pas de relation...)
     public function getNewUser($id_user)
     {
         $sql = $this->con->con()->prepare('SELECT `id_user`,`pseudo` FROM `users` WHERE id_user NOT IN((SELECT `id_user_1` FROM `follow` WHERE `id_user` = ? AND `status` = 1)) 

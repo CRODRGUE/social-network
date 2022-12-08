@@ -9,7 +9,7 @@ class PostCreate
     {
         session_start();
         if (isset($_SESSION['id_user']) && isset($_SESSION['status']) && $_SESSION['status'] === true && $_SESSION['id_user'] !== '') {
-            if (!empty($text_post)) {
+            if (!empty($text_post) && strlen($text_post) <= 400 & strlen($text_post) >= 2) {
                 $Post = new PostRepository();
                 $Post->con = new BDD();
                 $resPost = $Post->createPost($text_post, $_SESSION['id_user']);
@@ -18,7 +18,7 @@ class PostCreate
                     exit();
                 }
             } else {
-                $mes = 'Oupss une erreur c\'est produite... les données envoyer sont incorrectes';
+                $mes = 'Oupss une erreur c\'est produite... les données envoyer sont incorrectes' . strlen($text_post);
                 header("Location: http://localhost/modulePHP/projet_php/index?action=err&mes=" . $mes);
                 exit();
             }

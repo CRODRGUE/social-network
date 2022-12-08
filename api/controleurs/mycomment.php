@@ -1,25 +1,22 @@
 <?php
-
 require_once(__DIR__ . '/../bdd_con.php');
 require_once(__DIR__ . '/../modeles/user.php');
-require_once(__DIR__ . '/../modeles/post.php');
+require_once(__DIR__ . '/../modeles/comment.php');
 
-
-class Home
+class MyComment
 {
-    public function exec(array $data)
+    public function exec()
     {
         session_start();
         if (isset($_SESSION['id_user']) && isset($_SESSION['status']) && isset($_SESSION['status']) === true && $_SESSION['id_user'] != '') {
-            $Post = new PostRepository();
-            $Post->con = new BDD();
+            $Comment = new CommentRepository();
+            $Comment->con = new BDD();
             $User = new UserRepository();
             $User->con = new BDD();
-            (!isset($data['page']) || empty($data['page']) ? $page = 0 : $page = intval($data['page']));
             $resUser = $User->getUserById($_SESSION['id_user']);
-            $resPost = $Post->getUserFreindPost($_SESSION['id_user'], $page);
-            if ($resPost !== false && $resUser !== false) {
-                require_once(__DIR__ . '/../../templates/home.php');
+            $resCom = $Comment->getMeComment($_SESSION['id_user']);
+            if ($resCom !== false && $resUser !== false) {
+                require_once(__DIR__ . '/../../templates/mycomment.php');
             } else {
                 $mes = 'Oupss une erreur c\'est produite...';
                 header("Location: http://localhost/modulePHP/projet_php/index?action=err&mes=" . $mes);

@@ -8,12 +8,12 @@ class DeleteComment
     {
         session_start();
         if (isset($_SESSION['id_user']) && isset($_SESSION['status']) && $_SESSION['status'] === true && $_SESSION['id_user'] !== '') {
-            if (!empty($data['id_post']) && !empty($data['id_com'])) {
+            if (!empty($data['id_post']) && !empty($data['id_com']) && !empty($data['id']) && $data['id'] === $_SESSION['id_user']) {
                 $Comments = new CommentRepository();
                 $Comments->con = new BDD();
-                $resComments = $Comments->deleteComment($data['id_com']);
+                $resComments = $Comments->deleteComment($data['id_com'], $_SESSION['id_user']);
                 if ($resComments !== false) {
-                    header("Location: http://localhost/modulePHP/projet_php/index?action=post&id=" . $data['id_post'] . "\"");
+                    header("Location: http://localhost/modulePHP/projet_php/index?action=" . (isset($data['dir']) ? "mescom" : "post&id=" . $data['id_post']));
                     exit();
                 }
                 $mes = 'Oupss une erreur c\'est produite...';

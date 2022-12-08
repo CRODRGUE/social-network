@@ -1,0 +1,6 @@
+logout // date 2022-12-08 16:27:10 // id_user  // ip ::1
+logout // date 2022-12-08 16:30:25 // id_user  // ip ::1
+logout // date 2022-12-08 16:30:59 // id_user  // ip ::1
+logout // date 2022-12-08 16:38:48 // id_user  // ip ::1
+logout // date 2022-12-08 16:59:19 // id_user  // ip ::1
+logout // date 2022-12-08 17:04:59 // id_user  // ip ::1

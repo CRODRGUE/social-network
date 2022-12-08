@@ -89,18 +89,21 @@ a{
     transition: all .3s ease-in;
 }
 
-.btn_deco{
+.btn_deco,
+.btn_page:hover{
     align-self: center;
     background-color: #0d0d0d;
     color: #f2f2f2;
     border-radius: 9999px;
     padding: 10px 15px;
     transition: all .3s ease-in;
-}.btn_deco:hover{
+}.btn_deco:hover,
+.btn_page{
     color: #0d0d0d;
     border: 1.5px solid #0d0d0d;
     background-color: #f2f2f2;
     border-radius: 9999px;
+    padding: 10px 15px;
     transition: all .3s ease-in;
 }
 /* bloc centre coter droit... */
@@ -178,6 +181,10 @@ a{
     background-color: #f2f2f2;
 }
 
+.text_post{
+    word-break: break-all;
+}
+
 .post_footer{
     width: 100%;
     height: auto;
@@ -191,7 +198,7 @@ a{
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-}.reaction>img{
+}.reaction>a>img{
     width: 30px;
     height: 30px;
 }.post_user>img{
@@ -230,6 +237,20 @@ a{
     align-items: center;
 }
 
+.nav_page{
+    width: 60%;
+    margin: 25px 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.btn_disabled{
+    visibility: hidden;
+    pointer-events: none;
+    cursor: default;
+}
 
 .btn_add{
     position: fixed;

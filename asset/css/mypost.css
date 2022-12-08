@@ -5,7 +5,7 @@
 }
 
 body{
-    min-height: 200vh;
+    min-height: 100vh;
     height: auto;
     position: relative;
 }
@@ -98,7 +98,7 @@ a{
     transition: all .3s ease-in;
 }.btn_deco:hover{
     color: #0d0d0d;
-    border: 1.5px solid #0d0d0d;
+    border: 1px solid #0d0d0d;
     background-color: #f2f2f2;
     border-radius: 9999px;
     transition: all .3s ease-in;
@@ -106,152 +106,56 @@ a{
 /* bloc centre coter droit... */
 .cb_right{
     margin-left: 20%;
-    margin-top: 70px;
+    margin-top: 100px;
     width: 80%;
     min-height: 100vh;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-
 }
 
-.block_contenu{
+.post_block{
     width: 80%;
     height: auto;
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row nowrap;
     justify-content: space-between;
+    align-items: center;
     margin-top: 30px;
     padding: 15px;
     box-shadow: 1px 1px 10px 1px #0d0d0d;
     background-color: #f2f2f2;
     border-radius: 15px;
 }
-/* block post (information du post) */
-.post_block{
-    min-height: 30vh;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
+
+.post_block>p{
+    width: 75%;
+    height: auto;
 }
 
-.post_header,
-.comment_header{
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-}
-.btn_sup{
-    background-color:#de1414;
-    padding: 5px 15px;
-    border-radius: 9999px;
-}
-.post_footer{
-    width: 100%;
+.post_nav{
+    width: 25%;
     height: auto;
     display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
     align-items: center;
-    justify-content: space-between;
 }
 
-.post_user,
-.reaction{
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-}.reaction>a>img{
-    width: 30px;
-    height: 30px;
-}.post_user>img{
-    width: 45px;
-    height: 45px;
+.post_nav>a{
     background-color: #0d0d0d;
-    border-radius: 50%; 
-}.post_user>a{
-    text-decoration: none;
-    margin-left: 10px;
-    color: #0d0d0d;
-}
-
-.reaction_block{
-    width: 30%;
-    height: auto;
-    display: flex;
-    flex-wrap: row nowrap;
-    justify-content: space-evenly;
-}
-
-/* block input (ajouter un commentaire) */
-.block_input{
-    margin: 15px 0;
-}.block_input>form{
-    width: 100%;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.block_input>form>input{
-    width: 80%;
-    height: 40px;
-    padding: 5px;
-    border-radius: 15px;
     border: 1px solid #0d0d0d;
-    color: #0d0d0d;
-}
-
-.block_input>form>button{
-    background: url("http://localhost/modulePHP/projet_php/asset/btn_send_off.png");
-    height: 40px;
-    width : 40px;
-    border-radius: 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    color: #f2f2f2;
+    border-radius: 9999px;
+    padding: 10px 15px;
     transition: all .3s ease-in;
-}.block_input>form>button:hover{
-    height: 40px;
-    width : 40px;
-    border-radius: 50%;
-    background : center / cover url("http://localhost/modulePHP/projet_php/asset/btn_send_on.png") #0d0d0d no-repeat;
+}.post_nav>a:hover{
+    color: #0d0d0d;
+    border: 1px solid #0d0d0d;
+    background-color: #f2f2f2;
+    border-radius: 9999px;
     transition: all .3s ease-in;
 }
-
-/* block comments (bloc des commentaires) */
-.comment_block{
-    margin: 10px 15px;
-}
-.comment_user{
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-}
-.comment_user>img{
-    width: 30px;
-    height: 30px;
-    background-color: #0d0d0d;
-    border-radius: 50%; 
-}
-.test>a{
-    font-size: 15px;
-    text-decoration: none;
-    margin-left: 10px;
-    color: #0d0d0d;
-}.comment_block>p{
-    padding: 5px 10px;
-    text-align: justify;
-    font-size: 12px;
-}.test{
-    display: flex;
-    flex-flow: row;
-    align-items: baseline;
-}.test>p{
-    font-size: 10px;
-    margin-left: 5px;
-}
-
-
 
 .btn_add{
     position: fixed;
@@ -278,35 +182,6 @@ a{
     transition: all .3s ease-in;
     
 }
-
-
-.reaction_nbr{
-    position: relative;
-}
-
-.reaction_list{
-    display: none;
-    width: auto;
-    min-width: 100px;
-    height: auto;
-    position: absolute;
-    top: 20px;
-    left: 0;
-    padding: 5px 5px 5px 15px;
-    border-radius: 0 15px 15px 15px;
-    background-color: #0d0d0d;
-    color: #f2f2f2;
-}
-
-.reaction_list>li{
-    margin-top: 5px;
-    list-style: none;
-}
-
-.reaction:hover .reaction_list{
-    display: block;
-}
-
 
 .text_post,
 .text_com{

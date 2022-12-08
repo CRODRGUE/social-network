@@ -8,7 +8,7 @@ class CommentAdd
     {
         session_start();
         if (isset($_SESSION['status']) && isset($_SESSION['id_user']) && $_SESSION['status'] === true && $_SESSION['id_user'] !== '') {
-            if (!empty($id_post) && isset($input['comment']) && !empty($input['comment'])) {
+            if (!empty($id_post) && isset($input['comment']) && !empty($input['comment']) && strlen($input['comment']) <= 120 && strlen($input['comment']) >= 1) {
                 $Comment = new CommentRepository();
                 $Comment->con = new BDD();
                 $res = $Comment->createComment($id_post, $_SESSION['id_user'], $input['comment']);

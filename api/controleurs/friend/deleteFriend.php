@@ -10,11 +10,11 @@ class DeleteFriend
     {
         session_start();
         if (isset($_SESSION['id_user']) && isset($_SESSION['status']) && $_SESSION['status'] === true && $_SESSION['id_user'] !== '') {
-            if (!empty($data['id_user']) && !empty($data['id_friend'])) {
+            if (!empty($data['id_friend'])) {
                 $Friend = new FriendRepository();
                 $Friend->con = new BDD();
-                $resFriend = $Friend->deleteFriend($data['id_user'], $data['id_friend']);
-                $resFriend0 = $Friend->deleteFriend($data['id_friend'], $data['id_user']);
+                $resFriend = $Friend->deleteFriend($_SESSION['id_user'], $data['id_friend']);
+                $resFriend0 = $Friend->deleteFriend($data['id_friend'], $_SESSION['id_user']);
                 if ($resFriend !== false && $resFriend0 !== false) {
                     header("Location: http://localhost/modulePHP/projet_php/index?action=relation");
                     exit();

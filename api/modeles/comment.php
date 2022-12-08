@@ -15,11 +15,12 @@ class CommentRepository
 {
     public BDD $con;
 
+    //Recupere la liste des commentaires emis par l'utilisateur
     function getMeComment($id_user)
     {
-        $sql = $this->con->con()->prepare('SELECT *, (SELECT pseudo FROM `users` WHERE id_user = `commentaires`.id_user) as user_pseudo FROM `commentaires` WHERE `id_user` = ?');
+        $sql = $this->con->con()->prepare('SELECT *, (SELECT pseudo FROM `users` WHERE id_user = `commentaires`.id_user) as user_pseudo FROM `commentaires` WHERE `id_user` = ? ORDER BY `date_com` DESC');
         $sql->execute([$id_user]);
-        $res = $sql->fetch();
+        $res = $sql->fetchAll();
         if ($res === false) {
             return false;
         }
@@ -37,9 +38,10 @@ class CommentRepository
         return $comments;
     }
 
+    //Recupere la liste des commentaires d'un post
     function getCommentPost($id_post)
     {
-        $sql = $this->con->con()->prepare('SELECT *,(SELECT pseudo FROM `users` WHERE id_user = `commentaires`.id_user) as user_pseudo FROM `commentaires` WHERE `id_post` = ?');
+        $sql = $this->con->con()->prepare('SELECT *,(SELECT pseudo FROM `users` WHERE id_user = `commentaires`.id_user) as user_pseudo FROM `commentaires` WHERE `id_post` = ? ORDER BY `date_com` DESC');
         $sql->execute([$id_post]);
         $res = $sql->fetchAll();
         if ($res === false) {
@@ -59,6 +61,7 @@ class CommentRepository
         return $comments;
     }
 
+    //Creation d'un commentaire rattaché à un post/utilisateur
     function createComment($id_post, $id_user, $text_com)
     {
         $sql = $this->con->con()->prepare('INSERT INTO `commentaires`(`text_com`, `date_com`, `id_post`, `id_user`)  VALUES (?,?,?,?)');
@@ -67,6 +70,7 @@ class CommentRepository
         return $res;
     }
 
+    //Supprimer un commentaire
     function deleteComment($id_com)
     {
         $sql = $this->con->con()->prepare('DELETE FROM `commentaires` WHERE `id_com` = ?');
@@ -74,6 +78,7 @@ class CommentRepository
         return $res;
     }
 
+    //Supprimer tous les commentaires d'un post
     function deleteAllCommentPost($id_post)
     {
         $sql = $this->con->con()->prepare('DELETE FROM `commentaires` WHERE `id_post` = ?');
@@ -81,10 +86,11 @@ class CommentRepository
         return $res;
     }
 
+    //Supprimer tous les commentaires d'un utilisateur et de ses posts
     function deleteAllCommentUser($id_user)
     {
-        $sql = $this->con->con()->prepare('DELETE FROM `commentaires` WHERE `id_post` = ?');
-        $res = $sql->execute([$id_user]);
+        $sql = $this->con->con()->prepare('DELETE FROM `commentaires` WHERE id_post IN((SELECT id_post FROM posts WHERE id_user = ?)) OR id_user = ?');
+        $res = $sql->execute([$id_user, $id_user]);
         return $res;
     }
 }
