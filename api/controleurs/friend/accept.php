@@ -17,7 +17,7 @@ class AcceptFriendRequest
                 if ($resFriend0 !== false) {
                     $resFriend = $Friend->acceptFriendRequest($_SESSION['id_user'], $data['id_friend']);
                     if ($resFriend !== false) {
-                        header("Location: http://http://localhost/modulePHP/projet_php/index?action=relation");
+                        header("Location: http://localhost/modulePHP/projet_php/index?action=relation");
                         exit();
                     } else {
                         $mes = 'Oupss une erreur c\'est produite...';
