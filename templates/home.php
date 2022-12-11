@@ -3,10 +3,12 @@
 
 <?php ob_start(); ?>
 <header class="header_block">
-    <img src="http://localhost/modulePHP/projet_php/asset/logo.png" alt="logo du reseau social delat">
+    <a href="http://localhost/modulePHP/projet_php/index?action=home"><img src="http://localhost/modulePHP/projet_php/asset/logo.png" alt="logo du reseau social delat"></a>
     <div class="profile_block">
         <img src="http://localhost/modulePHP/projet_php/asset/profile-user.png" alt="image de profile">
-        <a href="http://localhost/modulePHP/projet_php/index?action=profil"><?= $resUser->pseudo ?></a>
+        <a href="http://localhost/modulePHP/projet_php/index?action=profil">
+            <?= $resUser->pseudo ?>
+        </a>
     </div>
 </header>
 <main class="center_block">
