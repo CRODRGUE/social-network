@@ -6,7 +6,7 @@ class BDD
     public function con(): \PDO
     {
         if ($this->bdd === null) {
-            $this->bdd = new \PDO('mysql:host=localhost;dbname=reseau_social0', 'root', '');
+            $this->bdd = new \PDO('mysql:host=mysql;dbname=reseau_social0', 'root', 'test');
         }
         return $this->bdd;
     }

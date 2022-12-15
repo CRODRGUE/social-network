@@ -4,3 +4,8 @@ logout // date 2022-12-08 16:30:59 // id_user  // ip ::1
 logout // date 2022-12-08 16:38:48 // id_user  // ip ::1
 logout // date 2022-12-08 16:59:19 // id_user  // ip ::1
 logout // date 2022-12-08 17:04:59 // id_user  // ip ::1
+logout // date 2022-12-15 15:46:51 // id_user  // ip 172.21.0.1
+logout // date 2022-12-15 15:47:10 // id_user  // ip 172.21.0.1
+logout // date 2022-12-15 15:47:30 // id_user  // ip 172.21.0.1
+logout // date 2022-12-15 15:50:07 // id_user 2 // ip 172.21.0.1
+logout // date 2022-12-15 15:50:35 // id_user 2 // ip 172.21.0.1

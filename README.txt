@@ -8,10 +8,22 @@ A noter toutes les demandes du cahier des charges ont été realisées et mise e
 	
 Pour lancer le projet 
 
-	- Pour lancer le projet il te faut lancer le script de la BDD (par besoins de créer de BDD il le fait déjà ...)
-	- Puis il faut que tu le places dans la même arborescence que moi de préférence mais normalement il marche dans tous les cas
-		==> \wamp64\www\modulePHP\projet_php
+	- Il faut lancer Docker
+	- Ouvrir un terminal à la racine du projet (où se situe le fichier "docker-compose.yml")
+	- Exécuter la commande -> docker-compose up
 
+Pour ajouter la BDD (au premier lancement seulement)
+
+	-Il faut accéder au container du service mysql, pour identifier le nom du container utilisé dans un autre terminal 
+		la commande suivante -> docker ps -a (dans le nom il y a mysql-1)
+	-Ensuite il faut exécuter la commande suivante pour accéder au terminal bash du container 
+		-> docker exec -it NOM bash
+	-Maintenant il faut se connecter à la base de données avec la commande suivante (une fois connecté il y a "mysql>")
+		-> mysql -uroot -ptest
+	-Pour finir il faut simplement copier/coller le contenu du fichier "script BDD.sql" dans le terminal
+
+	==> http://localhost/modulePHP/projet_php/index <==
+	
 Comptes de tests
 	//lien avec Gil
 	mail -> cyril@test.ts

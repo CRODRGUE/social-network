@@ -5,10 +5,10 @@ class UserLogout
     public function exec()
     {
         session_start();
-        $this->addLog($_SERVER['id_user'], $_SERVER);
+        $this->addLog($_SESSION['id_user'], $_SERVER);
         session_unset();
         session_destroy();
-        header("Location: http://localhost/modulePHP/projet_php/index?action=connexion");
+        header("Location: http://localhost/modulePHP/projet_php/index");
         exit();
     }
 
